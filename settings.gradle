@@ -1,0 +1,2 @@
+rootProject.name='CitoyenAction'
+include ':app'
