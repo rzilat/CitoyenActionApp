@@ -22,4 +22,10 @@ public class MainActivity extends AppCompatActivity {
         Button loginButton=findViewById(R.id.loginButton);
         startActivity(intent);
     }
+    public void signIn(View view) {
+        Intent intent = new Intent(this, SignInActivity.class);
+        Button signInButton=findViewById(R.id.signInButton);
+        startActivity(intent);
+    }
+
 }
