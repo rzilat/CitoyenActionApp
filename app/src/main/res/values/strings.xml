@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">CitoyenAction</string>
     <string name="string">\'@string\'</string>
+    <string name="messages">messages</string>
 </resources>
