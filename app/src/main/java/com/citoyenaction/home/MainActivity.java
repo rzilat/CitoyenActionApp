@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void signIn(View view) {
-        Intent intent = new Intent(this, ProfilActivity.class);
+        Intent intent = new Intent(this, SignInActivity.class);
         Button signInButton=findViewById(R.id.signInButton);
         startActivity(intent);
     }

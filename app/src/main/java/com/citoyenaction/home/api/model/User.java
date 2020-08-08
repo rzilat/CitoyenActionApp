@@ -1,26 +1,26 @@
 package com.citoyenaction.home.api.model;
 
 public class User {
-   private String email	;
-   private String nom;
-   private String password;
-   private String prenom;
    private int userId;
+   private String nom;
+   private String prenom;
+   private String email;
+   private String password;
 
-    public User(String email, String nom, String password, String prenom, int userId) {
-        this.email = email;
+
+    public User (String nom, String prenom, String email, String password) {
         this.nom = nom;
-        this.password = password;
         this.prenom = prenom;
-        this.userId = userId;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
         this.email = email;
+        this.password = password;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getNom() {
@@ -31,14 +31,6 @@ public class User {
         this.nom = nom;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getPrenom() {
         return prenom;
     }
@@ -47,11 +39,19 @@ public class User {
         this.prenom = prenom;
     }
 
-    public int getUserId() {
-        return userId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

@@ -17,7 +17,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-
     private String email, password;
     private EditText emailInput, passwordInput;
     private Button loginButton;
@@ -53,6 +52,8 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+
 
 
 
