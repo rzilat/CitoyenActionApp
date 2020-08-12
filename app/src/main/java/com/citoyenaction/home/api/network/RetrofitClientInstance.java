@@ -6,6 +6,8 @@ import com.google.gson.GsonBuilder;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+
+
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClientInstance {
@@ -25,6 +27,7 @@ public class RetrofitClientInstance {
         public static Retrofit.Builder builder= new Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttp.build());
+
         private static Retrofit retrofit= builder.build();
 
         public static <S> S buildService(Class<S> serviceType){

@@ -2,4 +2,6 @@
     <string name="app_name">CitoyenAction</string>
     <string name="string">\'@string\'</string>
     <string name="messages">messages</string>
+    <string name="errorLogin">Email ou Password incorrect</string>
+    <string name="title_activity_mes_acts">MesActsActivity</string>
 </resources>

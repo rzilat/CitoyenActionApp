@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.citoyenaction.home.api.model.User;
 import com.citoyenaction.home.api.network.RetrofitClientInstance;
 import com.citoyenaction.home.api.service.GetDataService;
 
@@ -36,16 +37,25 @@ public class LoginActivity extends AppCompatActivity {
                 email= emailInput.getText().toString();
                 password=passwordInput.getText().toString();
 
-                Call<String> call=service.getUserByEmailAndPassword(email,password);
-                call.enqueue(new Callback<String>() {
+                Call<User> call=service.getUserByEmailAndPassword(email,password);
+                call.enqueue(new Callback<User>() {
 
                     @Override
-                    public void onResponse(Call<String> request, Response<String> response) {
-                        ((TextView) findViewById(R.id.textViewEmail)).setText(response.body());
+                    public void onResponse(Call<User> request, Response<User> response) {
+                        if(response.code()==200){
+                            Intent intent = new Intent(LoginActivity.this,UserHomeActivity.class);
+                            Bundle bundle= new Bundle();
+                            bundle.putLong("userId",response.body().getUserId());
+                            bundle.putString("nom",response.body().getNom());
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        }else{
+                            ((TextView) findViewById(R.id.errorLogin)).setText("error");
+                        }
                     }
 
                     @Override
-                    public void onFailure(Call<String> request, Throwable t) {
+                    public void onFailure(Call<User> request, Throwable t) {
                         ((TextView) findViewById(R.id.textViewEmail)).setText(t.toString());
                     }
                 });

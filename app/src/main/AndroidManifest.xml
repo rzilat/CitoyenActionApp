@@ -11,7 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserHomeActivity"></activity>
+        <activity android:name=".MyActsActivity"></activity>
+        <activity
+            android:name=".MesActsActivity"
+            android:label="@string/title_activity_mes_acts"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AddPostActivity" />
+        <activity android:name=".UserHomeActivity" />
         <activity android:name=".ProfilActivity" />
         <activity android:name=".SignInActivity" />
         <activity android:name=".LoginActivity" />

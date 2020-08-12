@@ -2,7 +2,12 @@ package com.citoyenaction.home.api.service;
 
 
 
+import com.citoyenaction.home.api.model.ActNonCivique;
 import com.citoyenaction.home.api.model.User;
+
+import java.util.List;
+
+
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -15,10 +20,16 @@ public interface GetDataService {
     Call<String> getMessage();
 
     @GET("citoyenaction/loginuser/{email}/{password}")
-    Call<String> getUserByEmailAndPassword(@Path(value="email") String email,@Path(value="password") String password);
+    Call<User> getUserByEmailAndPassword(@Path(value="email") String email,@Path(value="password") String password);
 
     @POST("citoyenaction/user")
     Call<User> addUser(@Body User user);
+
+    @POST("citoyenaction/actnoncivique")
+    Call<ActNonCivique> addActNonCivique(@Body ActNonCivique actNonCivique);
+
+    @GET("citoyenaction/actnonciviques/findbyuserid/{userId}")
+    Call<List<ActNonCivique>> getActNonCiviqueByUserId(@Path(value = "userId") long userId);
 
 
 

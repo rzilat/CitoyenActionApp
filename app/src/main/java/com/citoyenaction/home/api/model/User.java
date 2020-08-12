@@ -1,7 +1,7 @@
 package com.citoyenaction.home.api.model;
 
 public class User {
-   private int userId;
+   private long userId;
    private String nom;
    private String prenom;
    private String email;
@@ -15,11 +15,15 @@ public class User {
         this.password = password;
     }
 
-    public int getUserId() {
+    public User(long userId) {
+        this.userId = userId;
+    }
+
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
