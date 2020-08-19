@@ -18,7 +18,6 @@ import com.citoyenaction.home.api.network.RetrofitClientInstance;
 import com.citoyenaction.home.api.service.GetDataService;
 
 
-
 import java.util.Date;
 
 import retrofit2.Call;
@@ -43,11 +42,11 @@ public class AddPostActivity extends AppCompatActivity {
         Bundle bundle= getIntent().getExtras();
         userId= bundle.getLong("userId");
         final GetDataService service = RetrofitClientInstance.buildService(GetDataService.class);
-        titreInput=(EditText)findViewById(R.id.editTextTitre);
-        descriptionInput=(EditText)findViewById(R.id.editTextDescription);
+        titreInput=(EditText)findViewById(R.id.textTitre);
+        descriptionInput=(EditText)findViewById(R.id.textDescription);
         final User user= new User(userId);
 
-        addButton = (Button)findViewById(R.id.addButton);
+        addButton = (Button)findViewById(R.id.updateButton);
                addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +61,7 @@ public class AddPostActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<ActNonCivique> request, Response<ActNonCivique> response) {
                         if(response.code()==201){
-                            Intent intent = new Intent(AddPostActivity.this,MyActsActivity.class);
+                            Intent intent = new Intent(AddPostActivity.this,AddFileActivity.class);
                             Bundle bundle= new Bundle();
                             bundle.putLong("userId",userId);
                             intent.putExtras(bundle);
@@ -88,5 +87,6 @@ public class AddPostActivity extends AppCompatActivity {
 
 
     }
+
 
 }

@@ -42,4 +42,14 @@ public class UserHomeActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
+    public void Acts(View view) {
+        Intent intent = new Intent(UserHomeActivity.this, ActsActivity.class);
+        ImageButton listPost=findViewById(R.id.listPost);
+        Bundle bundle= new Bundle();
+        bundle.putLong("userId",userId);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 }
+
