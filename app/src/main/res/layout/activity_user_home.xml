@@ -80,4 +80,29 @@
         app:layout_constraintVertical_bias="0.739"
         app:srcCompat="@android:drawable/ic_menu_agenda" />
 
+    <ImageButton
+        android:id="@+id/logoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/profilButton"
+        app:layout_constraintTop_toBottomOf="@+id/listPost"
+        app:layout_constraintVertical_bias="0.574"
+        app:srcCompat="@android:drawable/ic_lock_power_off" />
+
+    <ImageButton
+        android:id="@+id/profilButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="profil"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/logoutButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mesPost"
+        app:srcCompat="@android:drawable/ic_menu_crop" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

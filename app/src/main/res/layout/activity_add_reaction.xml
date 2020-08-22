@@ -4,97 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfilActivity">
+    tools:context=".AddReactionActivity">
 
     <TextView
-        android:id="@+id/textViewNom"
+        android:id="@+id/textReactionTitre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="Nom"
-        app:layout_constraintBottom_toTopOf="@+id/textViewPrenom"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/textReactionCommentaire"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewPrenom"
+        android:id="@+id/textReactionCommentaire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="Prenom"
-        app:layout_constraintBottom_toTopOf="@+id/textViewEmail"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/textReactionEvaluation"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNom" />
+        app:layout_constraintTop_toBottomOf="@+id/textReactionTitre" />
 
     <TextView
-        android:id="@+id/textViewEmail"
+        android:id="@+id/textReactionEvaluation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="Email"
-        app:layout_constraintBottom_toTopOf="@+id/textViewPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPrenom" />
-
-    <TextView
-        android:id="@+id/textViewPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Mot de passe"
+        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/textReactionCommentaire" />
 
     <EditText
-        android:id="@+id/editTextNom"
+        android:id="@+id/editTextTitre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textViewNom"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textReactionTitre"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/editTextPrenom"
+        android:id="@+id/editTextCommentaire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textViewPrenom"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textReactionCommentaire"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/editTextEvaluation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textViewEmail"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textViewPassword"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textReactionEvaluation"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/buttonUpdateUser"
+        android:id="@+id/addRecButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Modifier"
+        android:text="ajouter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948" />
+        app:layout_constraintVertical_bias="0.929" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

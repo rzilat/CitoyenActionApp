@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActsActivity"></activity>
+        <activity android:name=".AddReactionActivity"></activity>
+        <activity android:name=".ActsActivity" />
         <activity android:name=".ShowPostActivity" />
         <activity android:name=".AddFileActivity" />
         <activity android:name=".MyActsActivity" />

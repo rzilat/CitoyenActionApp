@@ -51,5 +51,20 @@ public class UserHomeActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
+    public void profil(View view){
+        Intent intent = new Intent(UserHomeActivity.this, ProfilActivity.class);
+        ImageButton profilButton=findViewById(R.id.profilButton);
+        Bundle bundle= new Bundle();
+        bundle.putLong("userId",userId);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void logout(View view){
+        Intent intent = new Intent(UserHomeActivity.this, MainActivity.class);
+        ImageButton logoutButton=findViewById(R.id.logoutButton);
+        startActivity(intent);
+    }
 }
 

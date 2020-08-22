@@ -71,13 +71,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewPhoto" />
 
     <Button
-        android:id="@+id/updateButton"
+        android:id="@+id/updateActButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Modifier"
+        android:layout_marginStart="16dp"
+        android:text="Modifier act"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.929" />
@@ -88,10 +88,24 @@
         android:layout_height="167dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="216dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textViewPhoto"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <Button
+        android:id="@+id/addReactionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:onClick="addReaction"
+        android:text="Ajouter reaction"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.929" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

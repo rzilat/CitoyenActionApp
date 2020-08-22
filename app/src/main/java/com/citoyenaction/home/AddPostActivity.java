@@ -30,7 +30,7 @@ public class AddPostActivity extends AppCompatActivity {
     private String titre,description;
     private Byte photo,video;
     private EditText titreInput,descriptionInput;
-    private Button addButton;
+    private Button addActButton;
     private Date date;
 
 
@@ -46,14 +46,13 @@ public class AddPostActivity extends AppCompatActivity {
         descriptionInput=(EditText)findViewById(R.id.textDescription);
         final User user= new User(userId);
 
-        addButton = (Button)findViewById(R.id.updateButton);
-               addButton.setOnClickListener(new View.OnClickListener() {
+        addActButton = (Button)findViewById(R.id.addActButton);
+            addActButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 titre= titreInput.getText().toString();
                 description=descriptionInput.getText().toString();
-                ActNonCivique actNonCivique= null;
-                actNonCivique = new ActNonCivique(titre,description,date,0,0,user);
+                ActNonCivique actNonCivique = new ActNonCivique(titre,description,date,0,0,user);
 
                 Call<ActNonCivique> call=service.addActNonCivique(actNonCivique);
                 call.enqueue(new Callback<ActNonCivique>() {
