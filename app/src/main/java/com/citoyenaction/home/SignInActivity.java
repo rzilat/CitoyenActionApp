@@ -13,6 +13,8 @@ import com.citoyenaction.home.api.model.User;
 import com.citoyenaction.home.api.network.RetrofitClientInstance;
 import com.citoyenaction.home.api.service.GetDataService;
 
+import java.util.Date;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -21,6 +23,7 @@ public class SignInActivity extends AppCompatActivity {
 
 
     private String email, password, nom, prenom;
+    private Date date = new Date();
     private EditText emailInput, passwordInput, nomInput, prenomInput;
     private Button signInButton;
 
@@ -42,7 +45,7 @@ public class SignInActivity extends AppCompatActivity {
                 prenom= prenomInput.getText().toString();
                 email= emailInput.getText().toString();
                 password=passwordInput.getText().toString();
-                User user= new User(nom,prenom,email,password);
+                User user= new User(nom,prenom,email,password,date);
 
                 Call<User> call=service.addUser(user);
                 call.enqueue(new Callback<User>() {

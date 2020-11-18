@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
+
 import android.widget.TextView;
 
 import retrofit2.Call;
@@ -15,21 +15,26 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import com.citoyenaction.home.api.model.ActNonCivique;
-import com.citoyenaction.home.api.model.User;
+
 import com.citoyenaction.home.api.network.RetrofitClientInstance;
 import com.citoyenaction.home.api.service.GetDataService;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
+
 
 public class ShowPostActivity extends AppCompatActivity {
     private long actNonCiviqueId;
     private long userId;
     private String titre,description;
     private Byte photo,video;
-    private Button updateActButton,addReactionButton;
+    private Button updateActButton,addReactionButton,listReactionButton;
     private Date date;
     private ActNonCivique actNonCivique;
+    private SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+
+
+
 
 
     @Override
@@ -40,6 +45,8 @@ public class ShowPostActivity extends AppCompatActivity {
         final EditText textDescription=(EditText)findViewById(R.id.textDescription);
         final Button updateActButton=(Button)findViewById(R.id.updateActButton);
         final Button addReactionButton=(Button)findViewById(R.id.addReactionButton);
+        final Button listReactionButton=(Button)findViewById(R.id.listReactionButton);
+        final TextView textDate=(TextView)findViewById(R.id.textDate);
         final Intent intent= getIntent();
         final Bundle bundle= getIntent().getExtras();
         userId= bundle.getLong("userId");
@@ -54,6 +61,8 @@ public class ShowPostActivity extends AppCompatActivity {
                 actNonCivique=response.body();
                 textTitre.setText(actNonCivique.getTitre());
                 textDescription.setText(actNonCivique.getDescription());
+                date =actNonCivique.getDate();
+                textDate.setText(formatter.format(date));
                 if(bundle.getLong("userId")==response.body().getUser().getUserId()){
                     updateActButton.setVisibility(View.VISIBLE);
 
@@ -114,6 +123,16 @@ public class ShowPostActivity extends AppCompatActivity {
     public void addReaction(View view) {
         Intent intent = new Intent(ShowPostActivity.this, AddReactionActivity.class);
         Button addReactionButton=findViewById(R.id.addReactionButton);
+        Bundle bundle= new Bundle();
+        bundle.putLong("userId",userId);
+        bundle.putLong("actNonCiviqueId",actNonCiviqueId);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void findReactions(View view) {
+        Intent intent = new Intent(ShowPostActivity.this, MyReactionsActivity.class);
+        Button listReactionButton=findViewById(R.id.listReactionButton);
         Bundle bundle= new Bundle();
         bundle.putLong("userId",userId);
         bundle.putLong("actNonCiviqueId",actNonCiviqueId);

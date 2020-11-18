@@ -103,12 +103,13 @@ public class AddFileActivity extends AppCompatActivity  {
         File originalFile = FileUtils.getFile(AddFileActivity.this,fileUri);
         Toast.makeText(AddFileActivity.this,originalFile.getPath(),Toast.LENGTH_SHORT).show();
         RequestBody filePart=RequestBody.create(MediaType.parse(getContentResolver().getType(fileUri)), originalFile);
+
         MultipartBody.Part file =MultipartBody.Part.createFormData("photo",originalFile.getName(),filePart);
         GetDataService service = RetrofitClientInstance.buildService(GetDataService.class);
-        Call<ActUpload> call= service.saveActUpload(descriptionPart,file);
-        call.enqueue(new Callback<ActUpload>() {
+        Call<String> call= service.saveActUpload(descriptionPart,file);
+        call.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<ActUpload> call, Response<ActUpload> response) {
+            public void onResponse(Call<String> call, Response<String> response) {
                 if (response.code() == 200) {
                     Toast.makeText(AddFileActivity.this,"yes",Toast.LENGTH_SHORT).show();
                 }
@@ -120,7 +121,7 @@ public class AddFileActivity extends AppCompatActivity  {
                 }
             }
             @Override
-            public void onFailure(Call<ActUpload> call, Throwable t)
+            public void onFailure(Call<String> call, Throwable t)
             { Toast.makeText(AddFileActivity.this,"nooo",Toast.LENGTH_SHORT).show();}
 
         });

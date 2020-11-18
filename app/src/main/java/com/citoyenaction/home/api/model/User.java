@@ -1,18 +1,22 @@
 package com.citoyenaction.home.api.model;
 
+import java.util.Date;
+
 public class User {
    private long userId;
    private String nom;
-   private String prenom;
-   private String email;
-   private String password;
+    private String prenom;
+    private String email;
+    private String password;
+    private Date date;
 
 
-    public User (String nom, String prenom, String email, String password) {
+    public User(String nom, String prenom, String email, String password, Date date) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.password = password;
+        this.date = date;
     }
 
     public User(long userId) {
@@ -57,5 +61,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

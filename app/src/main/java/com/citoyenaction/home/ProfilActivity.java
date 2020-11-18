@@ -17,6 +17,9 @@ import com.citoyenaction.home.api.model.User;
 import com.citoyenaction.home.api.service.GetDataService;
 import com.citoyenaction.home.api.network.RetrofitClientInstance;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import retrofit2.Call;
 
 import retrofit2.Callback;
@@ -28,8 +31,10 @@ public class ProfilActivity extends AppCompatActivity {
     private String prenom;
     private String email;
     private String password;
+    private Date date;
     private Button buttonUpdateUser;
     private User user;
+    private SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,7 @@ public class ProfilActivity extends AppCompatActivity {
         final EditText editTextEmail=(EditText)findViewById(R.id.editTextEmail);
         final EditText editTextPassword=(EditText)findViewById(R.id.editTextPassword);
         final Button buttonUpdateUser=(Button)findViewById(R.id.buttonUpdateUser);
+        final TextView textDate=(TextView)findViewById(R.id.textViewDate);
         final Intent intent= getIntent();
         final Bundle bundle= getIntent().getExtras();
         userId= bundle.getLong("userId");
@@ -55,6 +61,8 @@ public class ProfilActivity extends AppCompatActivity {
                     editTextPrenom.setText(user.getPrenom());
                     editTextEmail.setText(user.getEmail());
                     editTextPassword.setText(user.getPassword());
+                    date =user.getDate();
+                    textDate.setText(formatter.format(date));
                 }
             }
 

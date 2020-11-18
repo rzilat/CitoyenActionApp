@@ -15,6 +15,8 @@ import com.citoyenaction.home.api.model.User;
 import com.citoyenaction.home.api.network.RetrofitClientInstance;
 import com.citoyenaction.home.api.service.GetDataService;
 
+import java.util.Date;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -22,6 +24,7 @@ import retrofit2.Response;
 public class AddReactionActivity extends AppCompatActivity {
     private long userId,actNonCiviqueId;
     private String titre,commentaire,evaluation;
+    private Date date = new Date();
     private EditText titreInput,commentaireInput,evaluationInput;
     private Button addRecButton;
 
@@ -48,7 +51,7 @@ public class AddReactionActivity extends AppCompatActivity {
                 commentaire= commentaireInput.getText().toString();
                 evaluation= evaluationInput.getText().toString();
                 Reaction reaction= null;
-                reaction = new Reaction(titre,commentaire,evaluation,user,actNonCivique);
+                reaction = new Reaction(titre,commentaire,evaluation,date,user,actNonCivique);
 
                 Call<Reaction> call=service.addReaction(reaction);
                 call.enqueue(new Callback<Reaction>() {

@@ -18,6 +18,7 @@ import com.citoyenaction.home.api.network.RetrofitClientInstance;
 import com.citoyenaction.home.api.service.GetDataService;
 
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import retrofit2.Call;
@@ -31,7 +32,10 @@ public class AddPostActivity extends AppCompatActivity {
     private Byte photo,video;
     private EditText titreInput,descriptionInput;
     private Button addActButton;
-    private Date date;
+    private Date date = new Date();
+
+
+
 
 
     @Override
