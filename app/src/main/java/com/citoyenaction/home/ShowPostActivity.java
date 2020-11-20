@@ -3,13 +3,17 @@ package com.citoyenaction.home;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,6 +21,7 @@ import retrofit2.Response;
 
 import com.citoyenaction.home.api.model.ActNonCivique;
 
+import com.citoyenaction.home.api.model.ActUpload;
 import com.citoyenaction.home.api.network.RetrofitClientInstance;
 import com.citoyenaction.home.api.service.GetDataService;
 
@@ -32,6 +37,7 @@ public class ShowPostActivity extends AppCompatActivity {
     private Button updateActButton,addReactionButton,listReactionButton;
     private Date date;
     private ActNonCivique actNonCivique;
+    private ActUpload actUpload;
     private SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
 
@@ -87,6 +93,29 @@ public class ShowPostActivity extends AppCompatActivity {
 
     });
 
+        final GetDataService service2 = RetrofitClientInstance.buildService(GetDataService.class);
+        Call<ActUpload> call2 = service2.getActUploadByActNonCiviqueId(actNonCiviqueId);
+        call2.enqueue(new Callback<ActUpload>() {
+
+            @Override
+            public void onResponse(Call<ActUpload> request, Response<ActUpload> response) {
+                if (response.code() == 200) {
+                    actUpload=response.body();
+                    contentImage.setImageBitmap(StringToBitMap(actUpload.getFileData()));
+                    Toast.makeText(ShowPostActivity.this,"yes",Toast.LENGTH_SHORT).show();
+
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ActUpload> request, Throwable t) {
+                // ((TextView) findViewById(R.id.textViewEmail)).setText(t.toString());
+            }
+
+        });
+
 
         updateActButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +150,17 @@ public class ShowPostActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public Bitmap StringToBitMap(String encodedString){
+        try{
+            byte [] encodeByte= Base64.decode(encodedString,Base64.DEFAULT);
+            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        }catch(Exception e){
+            e.getMessage();
+            return null;
+        }
     }
 
     public void addReaction(View view) {
