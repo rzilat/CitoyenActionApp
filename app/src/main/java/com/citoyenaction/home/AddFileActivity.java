@@ -38,6 +38,8 @@ import retrofit2.Response;
 public class AddFileActivity extends AppCompatActivity  {
 
     private Button buttonUpload;
+    private long userId;
+    private long actId;
 
 
     private static final int PICK_IMAGE_FROM_GALERY_REQUEST = 1;
@@ -51,6 +53,11 @@ public class AddFileActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_file);
+        Intent intent= getIntent();
+        Bundle bundle= getIntent().getExtras();
+        userId= bundle.getLong("userId");
+        actId= bundle.getLong("actId");
+
 
         if(ContextCompat.checkSelfPermission(AddFileActivity.this,Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(AddFileActivity.this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},MY_PERMISSIONS_REQUEST);
@@ -99,14 +106,15 @@ public class AddFileActivity extends AppCompatActivity  {
     }
 
     private void uploadFile(Uri fileUri){
-        RequestBody descriptionPart = RequestBody.create(MultipartBody.FORM,"description");
         File originalFile = FileUtils.getFile(AddFileActivity.this,fileUri);
         Toast.makeText(AddFileActivity.this,originalFile.getPath(),Toast.LENGTH_SHORT).show();
         RequestBody filePart=RequestBody.create(MediaType.parse(getContentResolver().getType(fileUri)), originalFile);
-
-        MultipartBody.Part file =MultipartBody.Part.createFormData("photo",originalFile.getName(),filePart);
+        MultipartBody.Part file =MultipartBody.Part.createFormData("file",originalFile.getName(),filePart);
+        //RequestBody actIdPart = RequestBody.create(MediaType.parse("multipart/form-data"),String.valueOf(actId));
+        RequestBody actIdPart = RequestBody.create(MultipartBody.FORM,String.valueOf(actId));
+        RequestBody descriptionPart = RequestBody.create(MultipartBody.FORM,originalFile.getName());
         GetDataService service = RetrofitClientInstance.buildService(GetDataService.class);
-        Call<String> call= service.saveActUpload(descriptionPart,file);
+        Call<String> call= service.saveActUpload(actIdPart,descriptionPart,file);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -122,7 +130,7 @@ public class AddFileActivity extends AppCompatActivity  {
             }
             @Override
             public void onFailure(Call<String> call, Throwable t)
-            { Toast.makeText(AddFileActivity.this,"nooo",Toast.LENGTH_SHORT).show();}
+            { Toast.makeText(AddFileActivity.this,t.toString(),Toast.LENGTH_SHORT).show();}
 
         });
     }

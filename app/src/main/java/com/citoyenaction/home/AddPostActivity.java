@@ -67,6 +67,7 @@ public class AddPostActivity extends AppCompatActivity {
                             Intent intent = new Intent(AddPostActivity.this,AddFileActivity.class);
                             Bundle bundle= new Bundle();
                             bundle.putLong("userId",userId);
+                            bundle.putLong("actId",response.body().getActNonCiviqueId());
                             intent.putExtras(bundle);
                             startActivity(intent);
                         }else{

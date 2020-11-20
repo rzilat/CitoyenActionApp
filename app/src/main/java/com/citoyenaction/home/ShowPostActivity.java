@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import retrofit2.Call;
@@ -43,6 +44,7 @@ public class ShowPostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_post);
         final EditText textTitre=(EditText)findViewById(R.id.textTitre);
         final EditText textDescription=(EditText)findViewById(R.id.textDescription);
+        final ImageView contentImage=(ImageView)findViewById(R.id.imageViewBig);
         final Button updateActButton=(Button)findViewById(R.id.updateActButton);
         final Button addReactionButton=(Button)findViewById(R.id.addReactionButton);
         final Button listReactionButton=(Button)findViewById(R.id.listReactionButton);
@@ -61,6 +63,7 @@ public class ShowPostActivity extends AppCompatActivity {
                 actNonCivique=response.body();
                 textTitre.setText(actNonCivique.getTitre());
                 textDescription.setText(actNonCivique.getDescription());
+                //contentImage.setImageBitmap(actNonCivique.getPhoto());
                 date =actNonCivique.getDate();
                 textDate.setText(formatter.format(date));
                 if(bundle.getLong("userId")==response.body().getUser().getUserId()){

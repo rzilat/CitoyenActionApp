@@ -5,6 +5,7 @@ public class ActUpload {
     private String fileData;
     private long fileId;
     private String fileName;
+    private long actNonCiviqueId;
 
     public ActUpload(String fileData, String fileName) {
         this.fileData = fileData;
@@ -41,5 +42,13 @@ public class ActUpload {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public long getActNonCiviqueId() {
+        return actNonCiviqueId;
+    }
+
+    public void setActNonCiviqueId(long actNonCiviqueId) {
+        this.actNonCiviqueId = actNonCiviqueId;
     }
 }

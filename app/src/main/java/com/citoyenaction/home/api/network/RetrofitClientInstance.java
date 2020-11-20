@@ -28,9 +28,9 @@ public class RetrofitClientInstance {
 
         //create okHttp client
         private static OkHttpClient.Builder okHttp= new OkHttpClient.Builder()
-                .connectTimeout(100, TimeUnit.SECONDS)
-                .readTimeout(100,TimeUnit.SECONDS)
-                .writeTimeout(100,TimeUnit.SECONDS)
+                .connectTimeout(500, TimeUnit.SECONDS)
+                .readTimeout(500,TimeUnit.SECONDS)
+                .writeTimeout(500,TimeUnit.SECONDS)
                 .addInterceptor(logger)
                 .addInterceptor(new Interceptor() {
                         @Override

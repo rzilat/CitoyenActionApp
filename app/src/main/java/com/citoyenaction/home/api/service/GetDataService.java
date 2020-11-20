@@ -49,7 +49,7 @@ public interface GetDataService {
 
     @Multipart
     @POST("citoyenaction/actupload")
-    Call<String> saveActUpload(@Part("description") RequestBody description, @Part MultipartBody.Part file);
+    Call<String> saveActUpload(@Part("actNonCiviqueId") RequestBody actId,@Part("description") RequestBody description, @Part MultipartBody.Part file);
 
     @GET("citoyenaction/actnoncivique/{actNonCiviqueId}")
     Call<ActNonCivique> getActNonCivique(@Path("actNonCiviqueId")long actNonCiviqueId);
@@ -65,6 +65,10 @@ public interface GetDataService {
 
     @GET("citoyenaction/reactions/findbyactnonciviqueId/{actNonCiviqueId}")
     Call<List<Reaction>> getReactionsByActNonCiviqueId(@Path(value = "actNonCiviqueId") long actNonCiviqueId);
+
+    @GET("citoyenaction/actupload/{actNonCiviqueId}")
+    Call<ActUpload> getActUploadByActNonCiviqueId(@Path("actNonCiviqueId")long actNonCiviqueId);
+
 
 
 
